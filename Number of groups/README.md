@@ -1,54 +1,53 @@
-# A Bitwise Assignment
+# Number of groups
 
-> https://www.hackerrank.com/contests/ieee-sbm-wie-codathon-23/challenges/a-bitwise-assignment
+> https://www.hackerrank.com/contests/ieee-sbm-wie-codathon-23/challenges/number-of-groups-1-1
 
 ---
 
-A teacher gave an assignment to her students. If given a positive integer m, they should find the minimum positive integer n, which will satisfy the following two conditions:
-- m and n > 0
-- m xor n > 0
-and-bitwise AND operation, xor-bitwise XOR operation.
+Given 3 integers a,b and c where a,b,c are all positive (>0), find the number of groupings (a,b) such that
 
-Please help her students find out the answer!
+`(a * lcm (x,y)) - (b * hcf(x,y)) = c`
+where lcm(x,y) is the least common multiple of x and y and hcf(x,y) is the highest common factor of x and y.
 
 Input Format
-The first line of input contains a single integer a (1≤a≤103) — the number of input test cases.
-For each test case, the only line of input contains one integer m (1≤m≤230).
+First line has one integer t indicating the number of testcases (1≤t≤104).
+Next t lines contain 3 integers each - a,b,c (1≤a,b and c≤107)
 
 Constraints
-1≤a≤103
-1≤m≤230
+Integer t, 1≤t≤104
+Integer a, 1≤a≤107
+Integer b, 1≤b107
+Integer c, 1≤c107
 
 Output Format
-For each test case, print a single integer — the minimum number of n.
+Print the number of groupings (x,y) which satisfy the given equation for each of the test cases.
 
 Sample Input 0
 `
-5
-1
 2
-15
-122
-256
+5 58 9
+3 63 5
 `
 
 Sample Output 0
 `
-3
-3
-1
-2
-257
+0
+0
 `
 
-Explanation 0
+Sample Input 1
+`
+4
+1 1 3
+4 2 6
+3 3 7
+2 7 25
+`
 
-Note
-
-Test case 1:
-
-1 and 3 = 1 > 0, 1 xor 3 = 2 > 0.
-
-Test case 2:
-
-2 and 3 = 2 > 0, 2 xor 3 = 1 > 0.
+Sample Output 1
+`
+4
+3
+0
+8
+`
