@@ -37,4 +37,10 @@ def calculate_radar(x, y):
 demons_radar = calculate_radar(ex, fy)
 travellers_radar = calculate_radar(cx, dy)
 
-paths_to_portal = []
+reached = False
+blocks = []
+paths_to_portal = product(range(min(cx, ax), max(cx, ax)+1), range(min(dy, by), max(dy, by)+1))
+for path in paths_to_portal:
+    if path in demons_radar:
+        blocks.append(path)
+print(blocks)
