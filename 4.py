@@ -4,7 +4,6 @@ Loids Watch
 import math
 
 
-LARGE = 1000
 TEST_CASES = int(input())
 
 tests = []
@@ -23,7 +22,8 @@ def reverse(num):
 for s, x in tests:
     count = 0
     x = int(x)
-    for times in range(LARGE):
+    palindromes = []
+    while True:
         HH, MM = [int(d) for d in s.split(":")]
         MM += x
 
@@ -33,6 +33,11 @@ for s, x in tests:
         if HH > 23:
             HH %= 24
 
-        NUM = "".join([str(HH), str(MM)])
-        count += int(is_palindrome(int(NUM)))
+        NUM = int("".join([str(HH), str(MM)]))
+        if NUM in palindromes:
+            break
+        delta = int(is_palindrome(NUM))
+        if delta:
+            palindromes.append(NUM)
+        count += delta
     print(count)
