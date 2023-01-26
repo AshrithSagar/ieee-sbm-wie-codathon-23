@@ -1,10 +1,7 @@
 """
 Loids Watch
 """
-import math
-
-
-LARGE = 60 * 24  # Periodic with 1440 atleast.
+REPEAT = 60 * 24  # Periodic with 1440 atleast.
 TEST_CASES = int(input())
 
 tests = []
@@ -13,13 +10,9 @@ for test in range(TEST_CASES):
     s, x = line.split(" ")
     tests.append((s, x))
 
-def is_palindrome(num):
+def is_palindrome(string):
     """ Check for palindrome. Returns bool. """
-    return reverse(num) == num
-
-def reverse(num):
-    """ Return reverse of a number. Recursive function. """
-    return int(num != 0) and ((num % 10) * (10**int(math.log(num, 10))) + reverse(num // 10))
+    return string[::-1] == string
 
 def append_0(num):
     """ Add a 0 to the string if number is single digit. Returns string """
@@ -30,11 +23,9 @@ for s, x in tests:
     x = int(x)
     HH, MM = [int(d) for d in s.split(":")]
     HH_0, MM_0 = HH, MM
-    for times in range(LARGE):
+    for times in range(REPEAT):
         HH_s, MM_s = append_0(HH), append_0(MM)
-        print(HH_s, MM_s)
-        NUM = int("".join([HH_s, MM_s]))
-        print(NUM, is_palindrome(NUM))
+        NUM = "".join([HH_s, MM_s])
         COUNT += int(is_palindrome(NUM))
 
         MM += x
