@@ -34,10 +34,18 @@ def calculate_radar(pos_x, pos_y):
 demons_radar = calculate_radar(ex, fy)
 travellers_radar = calculate_radar(cx, dy)
 
-REACHED = False
-blocks = []
-paths_to_portal = product(range(min(cx, ax), max(cx, ax)+1), range(min(dy, by), max(dy, by)+1))
-for path in paths_to_portal:
-    if path in demons_radar:
-        blocks.append(path)
-print(blocks)
+def check_reachable(reached, pos_cx, pos_dy):
+    """ Recursive function to get paths. """
+    paths_to_portal = product(
+        range(min(pos_cx, ax), max(pos_cx, ax)+1),
+        range(min(pos_dy, by), max(pos_dy, by)+1))
+    for path in paths_to_portal:
+        if not reached and path != (pos_cx, pos_dy):
+            if path not in demons_radar:
+                check_reachable(reached, path[0], path[1])
+            if (cx, dy) == (ax, by):
+                reached = True
+    return reached
+
+REACHED = check_reachable(False, cx, dy)
+print("YES" if REACHED else "NO")
